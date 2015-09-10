@@ -2,6 +2,7 @@
 //10 Dec 2014
 //14 Dec 2014 added scene 7
 //15 Dec 2015 added scene 8
+//10 Sep 2015 added github and comments
 
 
 int lightMode = 0;
@@ -21,7 +22,7 @@ const int pinStar = 13;
 void setup(){
   timer = 10000;
   //Serial.begin(9600); //open serial port
-  //initialize pins - set direction and turn off
+  //initialize pins - set pin direction and turn off
    for(int count = 0; count<9; count++){
      pinMode(pinTree[count],OUTPUT); 
      digitalWrite(pinTree[count], LOW);
