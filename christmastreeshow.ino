@@ -3,6 +3,7 @@
 //14 Dec 2014 added scene 7
 //15 Dec 2015 added scene 8
 //10 Sep 2015 added github and comments
+//11 Sep 2015 added variable greenLightStrands
 
 
 int lightMode = 0;
@@ -12,6 +13,7 @@ int lastSwitchState = 0;
 int timer = 100;
 int count = 0;
 int countRepeat = 0;
+int greenLightStrands = 8;
 
 int pinTree[8] = {2,3,4,5,6,7,8,9};
 const int pinColoredLightString = 10;
@@ -37,12 +39,12 @@ void setup(){
 void loop (){
   digitalWrite(pinStar,HIGH);
   
-  for (count=0;count<8;count++) {
+  for (count=0;count<greenLightStrands;count++) {
     digitalWrite(pinTree[count], HIGH); //turn tree on
    }
    delay(1000);
    
-     for (count=0;count<8;count++) {
+     for (count=0;count<greenLightStrands;count++) {
     digitalWrite(pinTree[count], LOW); //turn off
    } 
    delay(1000);
@@ -59,6 +61,7 @@ void loop (){
 
 //implement light mode
 switch(lightMode){
+////////////////////////////////////////
   case 100: //test cycle through pin numbers
     timer = 1000;
     for (count=2;count<14;count++) {
@@ -72,7 +75,7 @@ switch(lightMode){
   case 0: //Turn on the tree!
     timer = 5000;
     digitalWrite(pinStar,HIGH);
-    for (count=0;count<8;count++) {
+    for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], HIGH); //turn on
      } 
      delay(timer);
@@ -82,7 +85,7 @@ switch(lightMode){
     timer = 250;
     digitalWrite(pinStar,HIGH);
     for (countRepeat=0;countRepeat<3;countRepeat++){
-      for (count=0;count<8;count++) {
+      for (count=0;count<greenLightStrands;count++) {
         digitalWrite(pinTree[count], LOW); //turn OFF
         delay(timer);
         digitalWrite(pinTree[count], HIGH); //turn on
@@ -94,7 +97,7 @@ switch(lightMode){
     timer = 250;
     digitalWrite(pinStar,HIGH);
     for (countRepeat=0;countRepeat<3;countRepeat++){
-      for (count=0;count<8;count++) {
+      for (count=0;count<greenLightStrands;count++) {
         digitalWrite(pinTree[count], HIGH); //turn ON
         delay(timer);
         digitalWrite(pinTree[count], LOW); //turn OFF
@@ -106,11 +109,11 @@ switch(lightMode){
     timer = 250;
     digitalWrite(pinStar,HIGH);
     for (countRepeat=0;countRepeat<2;countRepeat++){
-         for (count=0;count<8;count++) {
+         for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], LOW); //turn off
     } 
     delay(timer);
-        for (count=0;count<8;count++) {
+        for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], HIGH); //turn off
     } 
       delay(timer);
@@ -120,7 +123,7 @@ switch(lightMode){
   case 4: //propeller
     timer = 250;
     digitalWrite(pinStar,HIGH);
-    for (int countOff=0;countOff<8;countOff++){
+    for (int countOff=0;countOff<greenLightStrands;countOff++){
       digitalWrite(pinTree[countOff],LOW);
       }
     for (countRepeat=0;countRepeat<2;countRepeat++) {
@@ -137,7 +140,7 @@ switch(lightMode){
 ////////////////////////////////////////   
   case 5: //tree on with blinking star
     timer = 500;
-    for (count=0;count<8;count++) {
+    for (count=0;count<greenLightStrands;count++) {
      digitalWrite(pinTree[count], HIGH);
     }
     for (countRepeat=0;countRepeat<2;countRepeat++){
@@ -150,7 +153,7 @@ switch(lightMode){
 ////////////////////////////////////////   
   case 6: //tree off, pole on with blinking star
     timer = 500;
-    for (count=0;count<8;count++) {
+    for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], LOW);
     }
     for (count=0;count<2;count++) {
@@ -166,7 +169,7 @@ switch(lightMode){
   case 7: //Pulse Rotate
     timer = 100;
     digitalWrite(pinStar,HIGH);
-    for (count=0;count<8;count++) {
+    for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], LOW); //turn off
      } 
      for (count=0;count<2;count++) {
@@ -174,14 +177,14 @@ switch(lightMode){
      } 
 
     for (countRepeat=0;countRepeat<3;countRepeat++){
-      for (count=0;count<8;count++) {
+      for (count=0;count<greenLightStrands;count++) {
         //if (count==0){digitalWrite(pinTree[7],LOW);}
         digitalWrite(pinTree[count],HIGH );
         delay(timer);
         digitalWrite(pinTree[count-1], LOW);
         delay(timer);
        }
-        for (count=8;count>0;count--) {
+        for (count=greenLightStrands;count>0;count--) {
         //if (count==0){digitalWrite(pinTree[7],LOW);}
         digitalWrite(pinTree[count-1],HIGH );
         delay(timer);
@@ -194,7 +197,7 @@ switch(lightMode){
   case 8: //alternate
     timer = 500;
     digitalWrite(pinStar,HIGH);
-    for (count=0;count<8;count++) {
+    for (count=0;count<greenLightStrands;count++) {
       digitalWrite(pinTree[count], LOW); //turn off
      } 
      for (count=0;count<2;count++) {
@@ -245,7 +248,7 @@ if (lightMode< 100){
 
 
   //  timer = 250;
- //   for (count=0;count<8;count++) {
+ //   for (count=0;count<greenLightStrands;count++) {
    //   digitalWrite(pinTree[count], LOW); //turn on
   //  } 
   //  digitalWrite(pinStar,HIGH);
