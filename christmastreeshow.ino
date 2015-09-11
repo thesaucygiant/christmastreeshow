@@ -6,8 +6,8 @@
 //11 Sep 2015 added variable greenLightStrands
 
 
-int lightMode = 0;
-int lightScenes = 9;
+int lightScene = 0;
+int lightSceneTotal = 9;
 int switchState = 0;
 int lastSwitchState = 0;
 int timer = 100;
@@ -45,22 +45,22 @@ void loop (){
    delay(1000);
    
      for (count=0;count<greenLightStrands;count++) {
-    digitalWrite(pinTree[count], LOW); //turn off
+    digitalWrite(pinTree[count], LOW); //turn tree off
    } 
    delay(1000);
    
    for (count=0;count<2;count++) {
-    digitalWrite(pinNorthPole[count], HIGH); //turn off
+    digitalWrite(pinNorthPole[count], HIGH); //turn on center pole
    } 
    delay(1000);
    
    for (count=0;count<2;count++) {
-    digitalWrite(pinNorthPole[count], LOW); //turn off
+    digitalWrite(pinNorthPole[count], LOW); //turn off center pole
    } 
    delay(1000);
 
-//implement light mode
-switch(lightMode){
+//light scenes
+switch(lightScene){
 ////////////////////////////////////////
   case 100: //test cycle through pin numbers
     timer = 1000;
@@ -165,6 +165,7 @@ switch(lightMode){
       digitalWrite(pinStar, HIGH); //turn on
       delay(timer);
     }
+    break;
 ////////////////////////////////////////   
   case 7: //Pulse Rotate
     timer = 100;
@@ -227,20 +228,18 @@ switch(lightMode){
         delay(timer);
        } 
      break; 
-    
-    
-    
-}//Case
+////////////////////////////////////////       
+  }//Case
 
 //auto increment the light mode
-if (lightMode< 100){
-  if (lightMode == lightScenes) {
-    lightMode=0;
+if (lightScene< 100){
+  if (lightScene == lightSceneTotal) {
+    lightScene=0; //reset to first lightScene
    }else{
-    lightMode++;
+    lightScene++;
    }
  }
-   //Serial.print(lightMode);
+   //Serial.print(lightScene);
 
 }//loop
 
